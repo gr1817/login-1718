@@ -1,0 +1,16 @@
+services:
+  svc1:
+    image: gopi1718/login-1718
+    ports:
+      - "8083:80"
+  svc2:
+    build: ./food
+    image: gopi1718/foodcourt
+    ports:
+      - "8084:80"
+  svc3:
+    image: nginx
+    ports:
+      - "8085:80"
+    volumes:
+      - /home/ubuntu/app-services/ecomm:/usr/share/nginx/html
