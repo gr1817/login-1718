@@ -6,11 +6,11 @@ spec:
   # 1 Copy of Nginx should exist at all time
   replicas: 1
   selector:
-    matchLables:
+    matchLabels:
       tier: frontend
   template:
     metadata:
-      lables:
+      labels:
         tier: frontend
     spec:
       containers:
