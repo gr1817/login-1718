@@ -2,21 +2,19 @@ apiVersion: app/v1
 kind: ReplicaSet
 metadata:
   name: nginx
-  lables:
-    tier: frontend
 spec:
   # 1 Copy of Nginx should exist at all time
   replicas: 1
   selector:
-    matcheLables:
+    matchLables:
       tier: frontend
   template:
     metadata:
       lables:
-        tier: forntend
+        tier: frontend
     spec:
       containers:
       - name: nginx
         image: nginx
-      ports:
-      - containerPort: 80
+        ports:
+        - containerPort: 80
