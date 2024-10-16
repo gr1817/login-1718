@@ -1,0 +1,16 @@
+# yaml for Multi Container Pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-pod-1
+spec:
+  containers:
+  - name: nginx1
+    image: nginx
+    ports:
+    - containerPort: 80
+  
+  - name: nginx2
+    image: nginx
+    ports:
+    - containerPort: 80
