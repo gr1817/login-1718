@@ -1,0 +1,33 @@
+# Define Key Values
+key: value
+name: gopi
+city: hyderabad
+mobile: 8919849298
+
+# Not a Key Value Correct way
+name: raju
+name: arjun
+  city: hyderabad
+  mobile: 9999999999
+
+# Dictionary or Maps
+# Set of properties grouped together 
+person:
+  name: gopi
+  city: hyderabad
+  mobile: 9999999999
+
+# this is not a Dictionary
+person:
+name: gopi
+city: texas
+mobile: 9999999999
+
+# Lists of Arrays
+#Collection - Combination of Lists & Dictionaries
+person: # Dictionary
+  name: arjun
+  city: pune
+  hobbies: 
+    - cricket
+    - shuttle
