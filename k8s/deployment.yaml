@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # Unique key of the deployment instance
+  name: nginx
+spec:
+  # 1 Pod shouldexist at all times.
+  replicas: 1
+  selector:
+    matchlabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        #apply this label to podas and default
+        #the deployment labelselector to this value
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        #run this image
+        image: nginx
+        ports:
+        - conatinerPort: 80
