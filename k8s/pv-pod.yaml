@@ -9,7 +9,8 @@ spec:
         ClaimName: task-pv-claim
   containers:
     - name: task-pv-container
-      image: nginxports:
+      image: nginx
+      ports:
         - containerPort: 80
           name: "http-server"
       VolumeMounts:
