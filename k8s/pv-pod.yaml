@@ -5,8 +5,8 @@ metadata:
 spec:
   volumes:
     - name: task-pv-storage
-      prsistentVolumeClaim:
-        ClaimName: task-pv-claim
+      persistentVolumeClaim:
+        claimName: task-pv-claim
   containers:
     - name: task-pv-container
       image: nginx
