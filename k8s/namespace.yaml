@@ -1,0 +1,5 @@
+# yaml for Pod
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: qa
