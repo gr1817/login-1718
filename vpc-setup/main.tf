@@ -11,7 +11,7 @@ resource "aws_vpc" "login-vpc" {
 
 #Subnet for frontend
 
-resource "aws_subnet" "main" {
+resource "aws_subnet" "login-fe-subnet" {
   vpc_id     = aws_vpc.login-vpc.id
   cidr_block = "10.0.0.0/24"
   availability_zone = "us-west-2a"
@@ -19,5 +19,18 @@ resource "aws_subnet" "main" {
 
   tags = {
     Name = "login-frontend-subnet"
+  }
+}
+
+#Subnet for backendend
+
+resource "aws_subnet" "login-be-subnet" {
+  vpc_id     = aws_vpc.login-vpc.id
+  cidr_block = "10.0.1.0/24"
+  availability_zone = "us-west-2a"
+  map_public_ip_on_launch = "true"
+
+  tags = {
+    Name = "login-backend-subnet"
   }
 }
