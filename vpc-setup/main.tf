@@ -67,13 +67,13 @@ resource "aws_route_table" "login-public-rt" {
   }
 }
 
-#public association for frontend
+#public association frontend
 resource "aws_route_table_association" "login-public-asc-1" {
   subnet_id      = aws_subnet.login-fe-subnet.id
   route_table_id = aws_route_table.login-public-rt.id
 }
 
-#public association for backend
+#public association backend
 resource "aws_route_table_association" "login-public-asc-2" {
   subnet_id      = aws_subnet.login-be-subnet.id
   route_table_id = aws_route_table.login-public-rt.id
@@ -86,4 +86,10 @@ resource "aws_route_table" "login-private-rt" {
   tags = {
     Name = "login-private-route"
   }
+}
+
+#private association database
+resource "aws_route_table_association" "login-private-asc-1" {
+  subnet_id      = aws_subnet.login-db-subnet.id
+  route_table_id = aws_route_table.login-private-rt.id
 }
