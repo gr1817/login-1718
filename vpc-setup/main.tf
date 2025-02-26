@@ -89,7 +89,7 @@ resource "aws_route_table" "login-private-rt" {
 }
 
 #private association database
-resource "aws_route_table_association" "login-private-asc-1" {
+resource "aws_route_table_association" "login-private-asc" {
   subnet_id      = aws_subnet.login-db-subnet.id
   route_table_id = aws_route_table.login-private-rt.id
 }
