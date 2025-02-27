@@ -131,3 +131,28 @@ resource "aws_security_group" "login-fe-sg" {
     Name = "login-frontend-securitygroup"
   }
 }
+
+#ssh rule
+resource "aws_vpc_security_group_ingress_rule" "login-fe-shh" {
+  security_group_id = aws_security_group.login-fe-sg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 22
+  ip_protocol       = "tcp"
+  to_port           = 22
+}
+
+#http rule
+resource "aws_vpc_security_group_ingress_rule" "login-fe-http" {
+  security_group_id = aws_security_group.login-fe-sg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 80
+  ip_protocol       = "tcp"
+  to_port           = 80
+}
+
+#egress / outbound rule
+resource "aws_vpc_security_group_egress_rule" "login-fe-outbound" {
+  security_group_id = aws_security_group.login-fe-sg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "-1" # semantically equivalent to all ports
+}
