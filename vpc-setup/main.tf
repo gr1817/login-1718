@@ -29,7 +29,7 @@ resource "aws_subnet" "privae_subnet" {
   map_public_ip_on_launch = "false"
 
   tags = {
-    Name = "${var.vpc_name}-database-subnet"
+    Name = "${var.vpc_name}-db-subnet"
   }
 }
 
@@ -72,7 +72,7 @@ resource "aws_route_table_association" "login-public-asc" {
   route_table_id = aws_route_table.login-public-rt.id
 }
 
-#private association database
+# private association database
 resource "aws_route_table_association" "login-private-asc" {
   subnet_id      = aws_subnet.login-db-subnet.id
   route_table_id = aws_route_table.login-private-rt.id
