@@ -72,7 +72,6 @@ variable "db_ingress_ports" {
   type        = list(object({
     port  = number
     cidr  = string
-    image = string
   }))
   default = [
     {port = 22, cidr = "0.0.0.0/0"},
