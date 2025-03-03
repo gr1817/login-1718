@@ -26,7 +26,7 @@ variable "vpc_name"{
  }
 
 # Varibale public subnet 
-variable "public_subent_cidrs"{
+variable "public_subnet_cidrs"{
  type = map(string)
   default = {
     frontend = "10.0.0.0/24"
@@ -35,7 +35,7 @@ variable "public_subent_cidrs"{
  }
 
 # Varibale private subnet
-variable "private_subent_cidr"{
+variable "private_subnet_cidr"{
  type = string
  default = "10.0.2.0/24"
  }

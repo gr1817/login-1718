@@ -9,7 +9,7 @@ resource "aws_vpc" "login-vpc" {
 }
 
 # Public Subnets
-resource "aws_subnet" "public_subnets" {
+resource "aws_subnet" "public_subnet" {
   vpc_id                  = aws_vpc.login-vpc.id
   for_each                = var.public_subent_cidrs
   cidr_block              = each.value
@@ -22,9 +22,9 @@ resource "aws_subnet" "public_subnets" {
 }
 
 # Private Subnet
-resource "aws_subnet" "privae_subnet" {
+resource "aws_subnet" "private_subnet" {
   vpc_id     = aws_vpc.login-vpc.id
-  cidr_block = var.private_subent_cidr
+  cidr_block = var.private_subnet_cidr
   availability_zone = "us-west-2a"
   map_public_ip_on_launch = "false"
 
@@ -67,14 +67,14 @@ resource "aws_route_table" "login-private-rt" {
 
 #public subent association 
 resource "aws_route_table_association" "login-public-asc" {
-  for_each       = var.public_subent_cidrs 
-  subnet_id      = aws_subnet.public_subnets[each.key].id
+  for_each       = var.public_subnet_cidrs 
+  subnet_id      = aws_subnet.public_subnet[each.key].id
   route_table_id = aws_route_table.login-public-rt.id
 }
 
 # private association database
 resource "aws_route_table_association" "login-private-asc" {
-  subnet_id      = aws_subnet.login-db-subnet.id
+  subnet_id      = aws_subnet.private_subnet.id
   route_table_id = aws_route_table.login-private-rt.id
 }
 
