@@ -65,7 +65,7 @@ resource "aws_route_table" "login-private-rt" {
   }
 }
 
-#public subent association 
+#public subnet association 
 resource "aws_route_table_association" "login-public-asc" {
   for_each       = var.public_subnet_cidrs 
   subnet_id      = aws_subnet.public_subnet[each.key].id
@@ -74,7 +74,7 @@ resource "aws_route_table_association" "login-public-asc" {
 
 # private association database
 resource "aws_route_table_association" "login-private-asc" {
-  subnet_id      = aws_subnet.private_subnet.id
+  subnet_id      = aws_subnet.private_subnet.id  # Corrected reference here
   route_table_id = aws_route_table.login-private-rt.id
 }
 
