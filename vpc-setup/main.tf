@@ -11,7 +11,7 @@ resource "aws_vpc" "login-vpc" {
 # Public Subnets
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = aws_vpc.login-vpc.id
-  for_each                = var.public_subent_cidrs
+  for_each                = var.public_subnet_cidrs
   cidr_block              = each.value
   availability_zone       = "us-west-2a"
   map_public_ip_on_launch = "true"
