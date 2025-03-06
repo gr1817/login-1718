@@ -167,3 +167,20 @@ resource "aws_vpc_security_group_ingress_rule" "login-db-ingress" {
   ip_protocol       = "tcp"
   to_port           = var.db_ingress_ports[count.index].port
 }
+
+# Locals for easier access
+locals {
+  security_groups = {
+    web = aws_security_group.login-fe-sg.id
+    app = aws_security_group.login-app-sg.id
+    db  = aws_security_group.login-db-sg.id
+  }
+}
+
+#egress / outbound rule
+resource "aws_vpc_security_group_egress_rule" "common_egress" {
+  for_each          = local.security_groups
+  security_group_id = each.value
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "-1" # semantically equivalent to all ports
+}
